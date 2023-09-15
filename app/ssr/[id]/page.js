@@ -2,21 +2,36 @@ import { getProductById } from "@/lib/getProducts";
 import React from "react";
 
 export async function generateMetadata({ params }) {
-  const productData = getProductById(params.id);
+  const productData = getProductById(params.id.split('-')[0]);
   const product = await productData;
-  if (!product.title) {
+  console.log(product[0].product_name);
+  if (!product) {
     title: "No product Found";
   } else
     return {
-      title: product.title,
-      description: product.category,
+      title: product[0].product_name,
+      description: product[0].product_name,
       openGraph: {
-        title: product.title,
-        
-        images: [product.imageUrl[0]],
+        title: product[0].title,
+
+        // images: [product.imageUrl[0]],
       },
     };
 }
-export default function SSR() {
-  return <div>SSR</div>;
+export default async function SSR({params}) {
+    const productData = getProductById(params.id.split('-')[0]);
+    const product = await productData;
+
+  return (
+  <div className="block md:flex mt-2 md:mt-12 space-x-5 lg:space-x-16">
+          <div className="shadow-2xl h-56 w-80 rounded-md bg-white flex flex-col">
+              <img
+                className="h-full w-full object-contain rounded-md cursor-pointer"
+                src={product[0].image}
+                alt={product[0].product_name}
+              />
+              <h1>{product[0].product_name}</h1>
+          </div>
+    </div>
+  );
 }

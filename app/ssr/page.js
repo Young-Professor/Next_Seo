@@ -9,8 +9,8 @@ async function ssr() {
     <div>
       This page will be rendered from server
       {products.map((product) => (
-        <div key={product._id}>
-          <a href={`/ssr/${product._id}`}>{product.name}</a>
+        <div key={product.pid}>
+          <a href={`/ssr/${product.pid}`}>{product.product_name}</a>
         </div>
       ))}
     </div>
