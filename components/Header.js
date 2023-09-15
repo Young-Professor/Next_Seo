@@ -9,17 +9,17 @@ function Header() {
       </div>
       <div className="flex space-x-10 items-center mx-5 text-xl text-blue-500 menuItems">
           <Link exact='true' href="/" ><b>Home</b></Link>
-          <Link  href="/Services"><b>Services</b></Link>
+          <Link  href="/services"><b>Services</b></Link>
           <Link  href="/" ><b>Collections</b></Link>
           <Link  href="/contacts" ><b>Contact</b></Link>
           <Link  href="/about" ><b>About</b></Link>
       </div>
       <div className="flex space-x-4 mx-2 profile ">
         <p className="mt-2 ">
-          <Link href="/Login">Login</Link>
+          <Link href="/login">Login</Link>
         </p>
         <p className="mt-2">
-          <Link href="/Register">Register</Link>
+          <Link href="/register">Register</Link>
         </p>
       </div>
     </div>
