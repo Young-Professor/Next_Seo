@@ -13,8 +13,8 @@ export async function generateMetadata({ params }) {
       description: product[0].product_name,
       openGraph: {
         title: product[0].title,
-
-        // images: [product.imageUrl[0]],
+        description: `${product[0].description} - Price: Ksh${product[0].price}`,
+        images: product[0].imageUrl,
       },
     };
 }
