@@ -1,5 +1,7 @@
 import { getProductById } from "@/lib/getProducts";
 import React from "react";
+import Image from 'next/image';
+
 
 export async function generateMetadata({ params }) {
   const productData = getProductById(params.id.split('-')[0]);
@@ -23,7 +25,7 @@ export default async function SSR({params}) {
   return (
   <div className="block md:flex mt-2 md:mt-12 space-x-5 lg:space-x-16">
           <div className="shadow-2xl h-56 w-80 rounded-md bg-white flex flex-col">
-              <img
+              <Image
                 className="h-full w-full object-contain rounded-md cursor-pointer"
                 src={product[0].image}
                 alt={product[0].product_name}
