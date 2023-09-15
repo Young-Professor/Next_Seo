@@ -8,15 +8,13 @@ export async function generateMetadata({ params }) {
   if (!product) {
     title: "No product Found";
   } else
-    return {
+  return {
+    openGraph: {
       title: product[0].product_name,
-      description: product[0].product_name,
-      openGraph: {
-        title: product[0].title,
-        description: `${product[0].description} - Price: Ksh${product[0].price}`,
-        images: product[0].imageUrl,
-      },
-    };
+      description: `${product[0].description} - Price: Ksh${product[0].price}`,
+      images: product[0].imageUrl,
+    },
+  };
 }
 export default async function SSR({params}) {
     const productData = getProductById(params.id.split('-')[0]);
